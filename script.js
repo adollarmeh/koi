@@ -1,40 +1,69 @@
-function createKoiAndSymbols() {
+document.addEventListener('DOMContentLoaded', function() {
     const koiContainer = document.getElementById('koi');
+    const abcContainer = document.getElementById('abc');
     const symbolsContainer = document.getElementById('symbols');
 
-    function createGifElement(src, className, container) {
+    // For dynamic koi gifs with direction and color
+    function createDynamicGifElement(color, direction, container) {
+        const gif = document.createElement('img');
+        gif.src = `${color}${direction}.gif`; // Assumes naming convention like GoldLR.gif
+        gif.className = 'koi';
+        const size = Math.random() * (160 - 80) + 80;
+        gif.style.width = `${size}px`;
+        gif.style.position = 'absolute';
+        gif.style.animationDuration = `${Math.random() * (60 - 20) + 20}s`;
+        gif.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
+        gif.style.left = `${Math.random() * (window.innerWidth - 50)}px`;
+        // Define animation direction based on the gif direction
+        switch (direction) {
+            case 'LR':
+                gif.style.animationName = 'driftRight';
+                break;
+            case 'RL':
+                gif.style.animationName = 'driftLeft';
+                break;
+            // Add cases for other directions
+        }
+        container.appendChild(gif);
+    }
+
+    const colors = ['Gold', 'Blue', 'Red', 'Green', 'Purple', 'Orange', 'Silver', 'Black'];
+    const directions = ['LR', 'RL', 'UD', 'DU', 'BLTR', 'BRBL', 'TLBR', 'TRBL'];
+
+    function getRandomElement(array) {
+        return array[Math.floor(Math.random() * array.length)];
+    }
+
+    for (let i = 0; i < 100; i++) {
+        const color = getRandomElement(colors);
+        const direction = getRandomElement(directions);
+        createDynamicGifElement(color, direction, koiContainer);
+    }
+
+    // For creating abc and symbol gifs
+    function createStaticGifElement(src, className, container) {
         const gif = document.createElement('img');
         gif.src = src;
         gif.className = className;
         const size = Math.random() * (160 - 80) + 80;
-        gif.style.width = `${className === 'koi' ? size : size / 2}px`;
+        gif.style.width = `${className === 'abc' ? size : size / 2}px`;
         gif.style.animationDuration = `${Math.random() * (60 - 20) + 20}s`;
         gif.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
-        gif.style.animationName = Math.random() > 0.5 ? 'driftRight' : 'driftLeft' : 'driftUp' : 'driftDown' ;
         container.appendChild(gif);
     }
 
-    function getRandomKoiGif() {
-        const koiGifs = ['koi.gif', 'koi2.gif', 'koi3.gif', 'koi4.gif'];
-        return koiGifs[Math.floor(Math.random() * koiGifs.length)];
-    }
-
-    
-    for (let i = 0; i < 100; i++) { // Adjusted number of clouds to 20 for demonstration
-        const koiGif = getRandomKoiGif(); // Randomly selects between cloud.gif and cloud2.gif
-        createGifElement(koiGif, 'cloud', koiContainer);
+    // Adjusted to demonstrate creating 'abc' gifs
+    for (let i = 0; i < 20; i++) { 
+        createStaticGifElement('abc.gif', 'abc', abcContainer);
     }
     
-    // Create coin symbols
-    for (let i = 0; i < 40; i++) { // Keeps original functionality for symbols
-        createGifElement('coin.gif', 'symbol', symbolsContainer);
+    // Create coin and Eth symbols
+    for (let i = 0; i < 40; i++) {
+        createStaticGifElement('coin.gif', 'symbol', symbolsContainer);
     }
-
-   // Create Bitc symbols
-    for (let i = 0; i < 30; i++) { // Keeps original functionality for symbols
-        createGifElement('Eth.gif', 'symbol', symbolsContainer);
+    for (let i = 0; i < 30; i++) {
+        createStaticGifElement('Eth.gif', 'symbol', symbolsContainer);
     }
-}
 
 document.addEventListener('mousemove', function(event) {
     if (typeof lastX === 'undefined' || typeof lastY === 'undefined') {
@@ -125,4 +154,4 @@ window.onclick = function(event) {
     }
 }
 
-createKoiAndSymbols();
+createabcAndSymbols();
