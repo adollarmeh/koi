@@ -68,6 +68,26 @@ body, html {
     100% { transform: translateY(-100vw); }
 }
 
+@keyframes driftBLTR {
+    0% { transform: translateX(-100%) translateY(100%); }
+    100% { transform: translateX(100vw) translateY(-100vh); }
+}
+
+@keyframes driftBRBL {
+    0% { transform: translateX(100%) translateY(100%); }
+    100% { transform: translateX(-100vw) translateY(-100vh); }
+}
+
+@keyframes driftTLBR {
+    0% { transform: translateX(-100%) translateY(-100%); }
+    100% { transform: translateX(100vw) translateY(100vh); }
+}
+
+@keyframes driftTRBL {
+    0% { transform: translateX(100%) translateY(-100%); }
+    100% { transform: translateX(-100vw) translateY(100vh); }
+}
+
 
 /* Container, modal, and button styling remains the same */
 .container {
