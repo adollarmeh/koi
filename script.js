@@ -1,28 +1,28 @@
-function createCloudsAndSymbols() {
-    const cloudsContainer = document.getElementById('clouds');
+function createKoiAndSymbols() {
+    const koiContainer = document.getElementById('koi');
     const symbolsContainer = document.getElementById('symbols');
 
     function createGifElement(src, className, container) {
         const gif = document.createElement('img');
         gif.src = src;
         gif.className = className;
-        const size = Math.random() * (180 - 80) + 80;
-        gif.style.width = `${className === 'cloud' ? size : size / 2}px`;
+        const size = Math.random() * (160 - 80) + 80;
+        gif.style.width = `${className === 'koi' ? size : size / 2}px`;
         gif.style.animationDuration = `${Math.random() * (60 - 20) + 20}s`;
         gif.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
-        gif.style.animationName = Math.random() > 0.5 ? 'driftRight' : 'driftLeft';
+        gif.style.animationName = Math.random() > 0.5 ? 'driftRight' : 'driftLeft' : 'driftUp' : 'driftDown' ;
         container.appendChild(gif);
     }
 
-    function getRandomCloudGif() {
-        const cloudGifs = ['cloud.gif', 'star.gif'];
-        return cloudGifs[Math.floor(Math.random() * cloudGifs.length)];
+    function getRandomKoiGif() {
+        const koiGifs = ['koi.gif', 'koi2.gif', 'koi3.gif', 'koi4.gif'];
+        return koiGifs[Math.floor(Math.random() * koiGifs.length)];
     }
 
     
     for (let i = 0; i < 100; i++) { // Adjusted number of clouds to 20 for demonstration
-        const cloudGif = getRandomCloudGif(); // Randomly selects between cloud.gif and cloud2.gif
-        createGifElement(cloudGif, 'cloud', cloudsContainer);
+        const koiGif = getRandomKoiGif(); // Randomly selects between cloud.gif and cloud2.gif
+        createGifElement(koiGif, 'cloud', koiContainer);
     }
     
     // Create coin symbols
@@ -48,11 +48,11 @@ document.addEventListener('mousemove', function(event) {
     const bodyElement = document.querySelector('body');
 
     if (Math.abs(diffX) > Math.abs(diffY)) {
-        bodyElement.style.cursor = `url(${diffX > 0 ? 'collector.png' : 'collector.png'}), auto`;
-        follower.src = diffX > 0 ? 'collector3.gif' : 'collector1.gif';
+        bodyElement.style.cursor = `url(${diffX > 0 ? 'boat.png' : 'boat.png'}), auto`;
+        follower.src = diffX > 0 ? 'boat3.gif' : 'boat1.gif';
     } else {
-        bodyElement.style.cursor = `url(${diffY > 0 ? 'collector.png' : 'collector.png'}), auto`;
-        follower.src = diffY > 0 ? 'collector4.gif' : 'collector2.gif';
+        bodyElement.style.cursor = `url(${diffY > 0 ? 'boat.png' : 'boat.png'}), auto`;
+        follower.src = diffY > 0 ? 'boat4.gif' : 'boat2.gif';
     }
 
     follower.style.display = 'block';
@@ -125,4 +125,4 @@ window.onclick = function(event) {
     }
 }
 
-createCloudsAndSymbols();
+createKoiAndSymbols();
