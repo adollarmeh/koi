@@ -1,2 +1,2 @@
 # koi
-colorful koi fishes for children brain development montessori for 1 - 12
+colorful koi fishes for children brain development montessori for age (1 - 12)
