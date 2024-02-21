@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
         container.appendChild(gif);
     }
 
-    const colors = ['Gold', 'Blue', 'Red', 'Green', 'Purple', 'Orange', 'Silver', 'Black'];
-    const directions = ['LR', 'RL', 'UD', 'DU', 'BLTR', 'BRBL', 'TLBR', 'TRBL'];
+    const colors = ['Gold', 'Blue', 'Red', 'Green', 'Purple', 'Orange', 'Pink', 'Grey'];
+    const directions = ['LR', 'RL', 'UD', 'DU', 'BLTR', 'BRTL', 'TLBR', 'TRBL'];
 
     function getRandomElement(array) {
         return array[Math.floor(Math.random() * array.length)];
