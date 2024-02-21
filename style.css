@@ -12,9 +12,9 @@ body, html {
     cursor: none;
 }
 
-.cloud, .symbol {
+.koi, .symbol {
     position: absolute;
-    animation: driftRight linear infinite; /* Default animation setup */
+    animation: driftRight wavy infinite; /* Default animation setup */
 }
 
 #follower {
@@ -58,6 +58,15 @@ body, html {
     100% { transform: translateX(-100vw); }
 }
 
+@keyframes driftUp {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(-100vw); }
+}
+
+@keyframes driftDown {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(-100vw); }
+}
 
 
 /* Container, modal, and button styling remains the same */
